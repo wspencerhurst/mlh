@@ -1,4 +1,20 @@
-# Goldmine
+<h1 align="center">Goldmine</h1>
+
+<p align="center"><b>Pick the month. Lock it in. Know why.</b></p>
+
+<h3 align="center">🟢 Live app: <a href="https://goldmine.techarge.workers.dev/">goldmine.techarge.workers.dev</a></h3>
+
+<p align="center">
+  <a href="https://goldmine.techarge.workers.dev/"><img alt="Open the live app" src="https://img.shields.io/badge/Open%20the%20live%20app-goldmine.techarge.workers.dev-afc149?style=for-the-badge"></a>
+  <a href="https://spencerhurst.com/goldmine/"><img alt="Watch the launch video" src="https://img.shields.io/badge/%E2%96%B6%20Launch%20video-2%3A12-e4bd70?style=for-the-badge"></a>
+</p>
+
+<p align="center">
+  <a href="https://spencerhurst.com/goldmine/"><img src="docs/media/highlights.gif" alt="Goldmine highlights: valuing each quotation period, the wait-or-declare decision, exact futures hedge tickets and backtest results" width="100%"></a>
+  <br><sub>Highlights. Click for the full launch video, with sound.</sub>
+</p>
+
+---
 
 Decision support for physical commodity traders: pick the **Quotation Period (QP)** under a
 physical contract (which month's average price you pay, e.g. M+1 / M+2 / M+3) and build the
