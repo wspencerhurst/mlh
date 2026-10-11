@@ -1,0 +1,15 @@
+{
+  "contract_id": "SAL-WTI",
+  "side": "sell",
+  "quantity": 600000,
+  "index": "WTI_CUSHING_SPOT",
+  "differential": 0.25,
+  "qp_options": [
+    {"name": "M+1", "month_offset": 1, "premium": 0.0}
+  ],
+  "default_qp": "M+1",
+  "declaring_party": "counterparty",
+  "payment_rule": "after_qp",
+  "payment_lag_bdays": 5,
+  "meta": {"note": "Back-to-back resale of the same cargo, priced on the M+1 average plus $0.25/bbl."}
+}

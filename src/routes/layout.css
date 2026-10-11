@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+@import 'tailwindcss';
+
+@theme {
+	--font-sans: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+	--font-display: 'Space Grotesk', 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+
+	/* MLH brand palette */
+	--color-mlh-red: #e73427;
+	--color-mlh-blue: #1d539f;
+	--color-mlh-yellow: #f8b92a;
+	--color-mlh-navy: #0a1628;
+	--color-mlh-ink: #111f36;
+
+	/* Checker-inspired dark desk surfaces */
+	--color-canvas: #0d1011;
+	--color-panel: #171b1c;
+	--color-line: #2b3333;
+	--color-ink: #f2f4ef;
+	--color-ink-2: #b4bdb7;
+	--color-ink-3: #87938d;
+	--color-accent: #afc149;
+	--color-accent-wash: #29301b;
+	--color-best: #e4bd70;
+	--color-best-wash: #30291b;
+	--color-good: #83d2a2;
+	--color-good-wash: #173126;
+	--color-bad: #f08b87;
+	--color-bad-wash: #351e20;
+	--color-warn: #f0c06f;
+	--color-warn-wash: #352b17;
+
+	/* Chart series (validated categorical order, light steps) */
+	--color-s1: #2a78d6;
+	--color-s2: #eb6834;
+	--color-s3: #1baf7a;
+	--color-s0: #6b7686;
+}
+
+html {
+	background: var(--color-canvas);
+	color-scheme: dark;
+}
+
+body {
+	background: var(--color-canvas);
+	color: var(--color-ink);
+	font-family: var(--font-sans);
+	font-feature-settings: 'tnum' 1, 'cv11' 1;
+}
+
+::selection { background: #afc149; color: #141414; }
+button, a, input, select { -webkit-tap-highlight-color: transparent; }
+.flow-in { animation: flow-in 420ms cubic-bezier(.2,.75,.25,1) both; }
+@keyframes flow-in { from { opacity: 0; transform: translateY(9px); } to { opacity: 1; transform: translateY(0); } }

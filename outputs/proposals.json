@@ -1,0 +1,142 @@
+[
+ {
+  "id": "b9da06a86f",
+  "kind": "QP_DECLARATION",
+  "deal": "AU dor\u00e9 cargo Dec26 (20,000 oz)",
+  "summary": "Declare M+3 (Mar27 average) now",
+  "details": {
+   "qp": "M+3",
+   "qp_month": "Mar27",
+   "deadline": "2026-12-24",
+   "quantity": 20000,
+   "unit": "oz"
+  },
+  "rationale": {
+   "asof": "2026-10-09",
+   "hedged_value_per_oz": {
+    "M+1": 1.51,
+    "M+2": 2.67,
+    "M+3": 8.18
+   },
+   "edge_vs_default_per_oz": 6.66,
+   "deadline": "2026-12-24",
+   "declare_now": true,
+   "funding_rate": 0.0555
+  },
+  "group": "e78317a412",
+  "status": "PENDING_APPROVAL",
+  "created_at": "2026-10-11T19:06:32+00:00",
+  "history": [],
+  "execution": {
+   "rail": null,
+   "ref": null
+  }
+ },
+ {
+  "id": "abbbff620a",
+  "kind": "FUTURES_ORDER",
+  "deal": "AU dor\u00e9 cargo Dec26 (20,000 oz)",
+  "summary": "SELL 200 GC Feb27",
+  "details": {
+   "instrument": "GC Feb27",
+   "exchange": "COMEX",
+   "side": "SELL",
+   "lots": 200,
+   "lot_size": 100.0,
+   "unit": "oz",
+   "order_type": "TAS",
+   "ref_price": 4251.5,
+   "notional_usd": 85030000.0
+  },
+  "rationale": {
+   "asof": "2026-10-09",
+   "hedged_value_per_oz": {
+    "M+1": 1.51,
+    "M+2": 2.67,
+    "M+3": 8.18
+   },
+   "edge_vs_default_per_oz": 6.66,
+   "deadline": "2026-12-24",
+   "declare_now": true,
+   "funding_rate": 0.0555
+  },
+  "group": "e78317a412",
+  "status": "PENDING_APPROVAL",
+  "created_at": "2026-10-11T19:06:32+00:00",
+  "history": [],
+  "execution": {
+   "rail": null,
+   "ref": null
+  }
+ },
+ {
+  "id": "a87b0ba522",
+  "kind": "FUTURES_ORDER",
+  "deal": "AU dor\u00e9 cargo Dec26 (20,000 oz)",
+  "summary": "BUY 200 GC Apr27",
+  "details": {
+   "instrument": "GC Apr27",
+   "exchange": "COMEX",
+   "side": "BUY",
+   "lots": 200,
+   "lot_size": 100.0,
+   "unit": "oz",
+   "order_type": "TAS",
+   "ref_price": 4286.0,
+   "notional_usd": 85720000.0
+  },
+  "rationale": {
+   "asof": "2026-10-09",
+   "hedged_value_per_oz": {
+    "M+1": 1.51,
+    "M+2": 2.67,
+    "M+3": 8.18
+   },
+   "edge_vs_default_per_oz": 6.66,
+   "deadline": "2026-12-24",
+   "declare_now": true,
+   "funding_rate": 0.0555
+  },
+  "group": "e78317a412",
+  "status": "PENDING_APPROVAL",
+  "created_at": "2026-10-11T19:06:32+00:00",
+  "history": [],
+  "execution": {
+   "rail": null,
+   "ref": null
+  }
+ },
+ {
+  "id": "6078ac081c",
+  "kind": "QP_DECLARATION",
+  "deal": "WTI cargo Jan27 (600,000 bbl)",
+  "summary": "Declare M+1 (Feb27 average) by 2026-11-23 (hedge provisionally now)",
+  "details": {
+   "qp": "M+1",
+   "qp_month": "Feb27",
+   "deadline": "2026-11-23",
+   "quantity": 600000,
+   "unit": "bbl"
+  },
+  "rationale": {
+   "asof": "2026-10-09",
+   "hedged_value_per_bbl": {
+    "M-1": -2.84,
+    "M": -1.18,
+    "M+1": 0.25
+   },
+   "edge_vs_default_per_bbl": 1.43,
+   "deadline": "2026-11-23",
+   "declare_now": false,
+   "funding_rate": 0.0555
+  },
+  "group": "5bf5f434b2",
+  "status": "PENDING_APPROVAL",
+  "created_at": "2026-10-11T19:06:32+00:00",
+  "history": [],
+  "execution": {
+   "rail": null,
+   "ref": null
+  }
+ }
+]

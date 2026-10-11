@@ -1,0 +1,15 @@
+{
+  "contract_id": "SAL-AU",
+  "side": "sell",
+  "quantity": 20000,
+  "index": "LBMA_GOLD_PM (proxy: XAUUSD spot close)",
+  "differential": 1.5,
+  "qp_options": [
+    {"name": "M+1", "month_offset": 1, "premium": 0.0}
+  ],
+  "default_qp": "M+1",
+  "declaring_party": "counterparty",
+  "payment_rule": "after_qp",
+  "payment_lag_bdays": 5,
+  "meta": {"note": "Refined bars sold to an offtaker on the M+1 average plus $1.50/oz."}
+}

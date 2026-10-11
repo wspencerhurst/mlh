@@ -1,0 +1,18 @@
+{
+  "contract_id": "PUR-WTI",
+  "side": "buy",
+  "quantity": 600000,
+  "index": "WTI_CUSHING_SPOT",
+  "differential": 0.0,
+  "qp_options": [
+    {"name": "M-1", "month_offset": -1, "premium": 0.0},
+    {"name": "M",   "month_offset":  0, "premium": 0.0},
+    {"name": "M+1", "month_offset":  1, "premium": 0.0}
+  ],
+  "default_qp": "M",
+  "declaring_party": "us",
+  "deadline_bdays_before_earliest_qp": 5,
+  "payment_rule": "after_qp",
+  "payment_lag_bdays": 5,
+  "meta": {"note": "Buyer's option: QP = calendar-month average of the index in M-1, M or M+1 (M = delivery month), declared no later than 5 business days before the first day of M-1."}
+}

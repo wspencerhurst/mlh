@@ -1,0 +1,87 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      # Empty on fork PRs, where secrets are not exposed.
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+
+      # worker-configuration.d.ts is not committed; check and build require it.
+      - name: Generate Worker types
+        run: npx wrangler types
+
+      - name: Type-check
+        run: npm run check
+
+      - name: Build
+        run: npm run build
+        env:
+          # Uploads source maps to Sentry; the build skips the upload when this is empty.
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+
+      # Secrets ship with the deployed version. A separate `wrangler secret put` fails whenever a PR
+      # preview has uploaded a newer, undeployed version of the Worker.
+      - name: Write Worker secrets
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        env:
+          APP_PASSWORD: ${{ secrets.APP_PASSWORD }}
+          SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
+          TIGER_DATABASE_URL: ${{ secrets.TIGER_DATABASE_URL }}
+        run: |
+          jq -n '{APP_PASSWORD: env.APP_PASSWORD, SESSION_SECRET: env.SESSION_SECRET} + (if (env.TIGER_DATABASE_URL // "") != "" then {TIGER_DATABASE_URL: env.TIGER_DATABASE_URL} else {} end)' > "$RUNNER_TEMP/secrets.json"
+
+      - name: Deploy to production
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy --secrets-file ${{ runner.temp }}/secrets.json
+
+      - name: Upload preview version
+        id: preview
+        if: github.event_name == 'pull_request' && env.CLOUDFLARE_API_TOKEN != ''
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: versions upload
+
+      - name: Preview URL summary
+        if: steps.preview.outcome == 'success'
+        env:
+          PREVIEW_URL: ${{ steps.preview.outputs.deployment-url }}
+        run: |
+          {
+            echo "### Preview"
+            if [ -n "$PREVIEW_URL" ]; then
+              echo "$PREVIEW_URL"
+            else
+              echo "Version uploaded. See the wrangler output in the previous step for the preview URL."
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"

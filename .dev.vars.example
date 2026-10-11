@@ -1,0 +1,9 @@
+# Copy to .dev.vars for local `wrangler dev`. In production set these with:
+#   npx wrangler secret put APP_PASSWORD
+#   npx wrangler secret put SESSION_SECRET
+#   npx wrangler secret put TIGER_DATABASE_URL   (optional, enables the Tiger Data trade blotter)
+APP_PASSWORD=change-me
+# Long random string, e.g. `openssl rand -base64 32`
+SESSION_SECRET=change-me-to-a-long-random-string
+# Optional: Tiger Data (TimescaleDB) connection string; trades are not recorded without it
+# TIGER_DATABASE_URL=postgresql://user:password@host:5432/tsdb?sslmode=require
